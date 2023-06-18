@@ -26,3 +26,4 @@ app.use(globalErrors);
 app.listen(process.env.API_PORT, () => {
     console.log(`Server is running on ${process.env.API_PORT}`);
 });
+

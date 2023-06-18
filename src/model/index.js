@@ -1,0 +1,14 @@
+exports.userModel = require('./userModel');
+exports.coinModel = require('./coinModel');
+exports.exchangeModel = require('./exchangeModel');
+exports.exchangeTickerModel = require('./exchangeTickerModel');
+exports.requestModel = require('./requestModel');
+exports.portfolioModel = require('./portfolioModel');
+// exports.alertModel = require('./alertModel');
+exports.priceAlertModel = require('./priceAlertModel');
+exports.arbitrageAlertModel = require('./arbitrageAlertModel');
+exports.targetCurrencyModel = require('./targetCurrencyModel');
+exports.cronTimingsModel = require('./cronTimingsModel');
+exports.companyDataModel = require('./companyDataModel');
+exports.requestModel = require('./requestModel');
+exports.favoriteModel = require('./favoriteModel');
