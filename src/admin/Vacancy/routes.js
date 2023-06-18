@@ -1,5 +1,5 @@
 const auth = require("../../middleware/adminauth")
-const Upload = require("../../middleware/img");
+const Upload = require("../../middleware/multer");
 const { Router } = require("express");
 const app = Router();
 const { Vacancy, FindserviceforAdmin, addVacency, ViewVacancy, findVacancy, deletVacancy } = require('./controllers');

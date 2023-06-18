@@ -1,29 +1,29 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const userModel = require("../../api/user/model");
-const { findByIdAndUpdate } = require('./model');
+// const userModel = require("../../api/user/model");
+// const { findByIdAndUpdate } = require('./model');
 const path = require("path")
-const saloon = require("../../api/saloonstore/model")
+// const saloon = require("../../model/userModel")
 
 const service = require("./service")
 
 exports.admin = async (req, res) => {
     try {
-        if (req.cookies.accessToken) {
+        if (req.cookies?.accessToken) {
             const { _id } = jwt.verify(req.cookies.accessToken, process.env.accessToken)
             const user = await userModel.findOne({ _id })
-            res.locals.message = req.flash();
+            // res.locals.message = req.flash();
             if (user) {
                 req.user = user
                 let data = await service.AllDetail(req)
                 res.render("users/dashboard", { user, data })
             } else {
-                res.locals.message = req.flash();
+                // res.locals.message = req.flash();
                 res.render("users/login")
             }
         } else {
-            res.locals.message = req.flash();
+            // res.locals.message = req.flash();
             res.render("users/login")
         }
     } catch (error) {
@@ -205,7 +205,7 @@ exports.AdminlogOut = async (req, res) => {
     }
 }
 
-const payment = require("../../api/payment/model")
+// const payment = require("../../api/payment/model")
 exports.paymentRevenues = async (req, res) => {
     try {
         let obj = {};

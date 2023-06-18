@@ -1,6 +1,6 @@
 
 const { AddCategory } = require("./service");
-const CategoryModule = require("../../api/category/model");
+// const CategoryModule = require("../../api/category/model");
 const mongoose = require('mongoose');
 
 exports.Category = async (req, res) => {

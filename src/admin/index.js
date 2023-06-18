@@ -13,8 +13,8 @@ module.exports = (app) => {
     app.use(`${prefix}`, require('./users/route'));
     app.use(`${prefix}`, require('./Artists/routes'));
     app.use(`${prefix}`, require('./Vacancy/routes'));
-    app.use(`${prefix}`, require('./Refer-And'));
-    app.use(`${prefix}`, require('./Contact-us'));
+    // app.use(`${prefix}`, require('./Refer-And-point'));
+    // app.use(`${prefix}`, require('./Contact-us'));
     app.use(`${prefix}`, require('./servicePackage/route'));
     app.use(`${prefix}`, require('./newLetter/routes'));
 };

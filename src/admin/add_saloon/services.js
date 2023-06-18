@@ -1,5 +1,5 @@
 const { default: mongoose } = require("mongoose");
-const saloon = require("../../api/saloonstore/model");
+// const saloon = require("../../api/saloonstore/model");
 
 exports.VIEW_SALOON = async (req) => {
   try {
@@ -113,7 +113,7 @@ exports.VIEW_SALOON = async (req) => {
     //     'as': 'package'
     //   }
     // })
-    
+
     return await saloon.aggregate(pipeline)
   } catch (error) {
     console.log(error)

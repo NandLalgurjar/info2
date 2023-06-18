@@ -1,5 +1,5 @@
 const auth = require("../../middleware/adminauth")
-const Upload = require("../../middleware/img");
+const Upload = require("../../middleware/multer");
 const { Router } = require("express");
 const app = Router();
 const { ADD_SERVICE, ADD_SERVICE_STORE, VIEW_SERVICE, DELETE_SERVICE, optiongeturl, findSallon } = require("./controllers");

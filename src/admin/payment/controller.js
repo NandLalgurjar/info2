@@ -1,8 +1,8 @@
-const payment = require("../../api/payment/model");
+// const payment = require("../../api/payment/model");
 const mongoose = require("mongoose");
-const { getAllSaloonCity } = require("../../api/saloonstore/controller");
+// const { getAllSaloonCity } = require("../../api/saloonstore/controller");
 const moment = require("moment")
-const saloon = require("../../api/saloonstore/model")
+// const saloon = require("../../api/saloonstore/model")
 
 
 exports.ViewAllPayment = async (req, res) => {

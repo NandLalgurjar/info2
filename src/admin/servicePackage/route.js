@@ -1,11 +1,11 @@
 const auth = require("../../middleware/adminauth");
-const Upload = require("../../middleware/img");
+const Upload = require("../../middleware/multer");
 const { Router } = require("express");
 const app = Router();
 const { FindServiceForPackages, deletePackage, addNewPackage,
- newPackageCreate, viewPackage, findPackageServices } = require('./controller');
+    newPackageCreate, viewPackage, findPackageServices } = require('./controller');
 
-const { joi_createCoupon } = require("../../middleware/joi_createCoupon");
+// const { joi_createCoupon } = require("../../middleware/joi_createCoupon");
 
 //create a pakege in service cillection insert 
 app.get("/add-new-package", auth, addNewPackage);//1

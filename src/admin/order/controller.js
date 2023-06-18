@@ -1,8 +1,8 @@
 
 const { getAllOrder } = require("./services")
-const order = require("../../api/order/model")
+// const order = require("../../api/order/model")
 const mongoose = require("mongoose")
-const { getAllSaloonCity } = require("../../api/saloonstore/controller")
+// const { getAllSaloonCity } = require("../../api/saloonstore/controller")
 
 
 exports.getAllOrder = async (req, res) => {
@@ -24,7 +24,7 @@ exports.getAllOrder = async (req, res) => {
         console.log(error);
     }
 }
-const { paymentsRefund } = require("../../api/payment/controller")
+// const { paymentsRefund } = require("../../api/payment/controller")
 exports.orderCancel = async (req, res) => {
     try {
         if (req.query.id) {

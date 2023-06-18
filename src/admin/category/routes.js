@@ -1,5 +1,5 @@
 const auth = require("../../middleware/adminauth")
-const Upload = require("../../middleware/img");
+const Upload = require("../../middleware/multer");
 const { Router } = require("express");
 const { Category, AddCategory, ViwesCategory, DeleteCategory } = require("./controller");
 const app = Router();
