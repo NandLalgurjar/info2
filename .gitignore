@@ -1,0 +1,17 @@
+*.jpg
+*.png
+*.jpeg
+node_modules
+*-lock.json
+.env
+.env.local
+.env.staging
+.env_docker
+Dockerfile-Admin
+Dockerfile-Api
+Dockerfile-Cron
+dbdata
+docker-compose.yml
+log-config
+public/uploads
+public/nandlal-90686-firebase-adminsdk-64hle-69e3d3bda7.json
