@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-// const userModel = require("../../api/user/model");
+const userModel = require("../../model/userModel");
 // const { findByIdAndUpdate } = require('./model');
 const path = require("path")
 // const saloon = require("../../model/userModel")
@@ -10,13 +10,14 @@ const service = require("./service")
 
 exports.admin = async (req, res) => {
     try {
+        console.log(req.cookies)
         if (req.cookies?.accessToken) {
             const { _id } = jwt.verify(req.cookies.accessToken, process.env.accessToken)
             const user = await userModel.findOne({ _id })
             // res.locals.message = req.flash();
             if (user) {
                 req.user = user
-                let data = await service.AllDetail(req)
+                let data;// = await service.AllDetail(req)
                 res.render("users/dashboard", { user, data })
             } else {
                 // res.locals.message = req.flash();
@@ -79,18 +80,19 @@ exports.login = async (req, res) => {
 
 exports.loginData = async (req, res) => {
     try {
-        res.locals.message = req.flash();
+        // res.locals.message = req.flash();
         const { email, password } = req.body;
         if (email) {
             const user = await userModel.findOne({ email: req.body.email });
+            console.log(user, "user")
             if (user) {
                 if (typeof user.password === 'undefined') {
-                    req.flash("error", "Detail is Not Found ");
-                    return res.redirect("/");
+                    // req.flash("error", "Detail is Not Found ");
+                    return res.redirect("/admin");
                 };
                 if (user.type != "admin" && user.type != "super-admin") {
-                    req.flash("error", "your are not eligible to login");
-                    return res.redirect("/");
+                    // req.flash("error", "your are not eligible to login");
+                    return res.redirect("/admin");
                 };
                 const match = await bcrypt.compare(password, user.password);
                 if (match) {
@@ -106,15 +108,15 @@ exports.loginData = async (req, res) => {
                         httpOnly: true,
                         overwrite: true
                     });
-                    req.flash("success", "login successfully");
-                    return res.redirect("/");
+                    // req.flash("success", "login successfully");
+                    return res.redirect("/admin");
                 } else {
-                    req.flash("error", "invalid login details");
-                    return res.redirect("/");
+                    // req.flash("error", "invalid login details");
+                    return res.redirect("/admin");
                 };
             } else {
-                req.flash("error", "invalid login details");
-                return res.redirect("/");
+                // req.flash("error", "invalid login details");
+                return res.redirect("/admin");
             };
         };
     } catch (error) {

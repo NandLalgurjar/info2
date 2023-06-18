@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const cookiparser = require("cookie-parser");
 
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.set('views', path.join(__dirname, 'src/admin/views'));
 app.set("view engine", "ejs");
 
+app.use(cookiparser('keyboard cat'));
+app.use(cookiparser());
 // dotenv configuration
 require('dotenv').config();
 

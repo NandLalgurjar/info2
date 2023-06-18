@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  
+   <%- include("../../partials/Header.ejs") %> 
   <%- include("../../partials/sidebar.ejs") %>
 
         <main id="main" class="main">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="ps-3">
                               <h6>
-                                <%= data.order %>
+                                <%= data?.order %>
                               </h6>
                             </div>
                           </div>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="ps-3">
                               <h6>
-                                <%= data.saloon %>
+                                <%= data?.saloon %>
                               </h6>
                             </div>
                           </div>
@@ -117,7 +117,7 @@
                               </div>
                               <div class="ps-3">
                                 <h6>
-                                  <%= data.user %>
+                                  <%= data?.user %>
                                 </h6>
                               </div>
                             </div>
@@ -140,7 +140,7 @@
                               </div>
                               <div class="ps-3">
                                 <h6>
-                                  <%= data.FindRequist %>
+                                  <%= data?.FindRequist %>
                                 </h6>
                               </div>
                             </div>
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="ps-3">
                                   <h6>
-                                    <%= data.Findservice %>
+                                    <%= data?.Findservice %>
                                   </h6>
                                 </div>
                               </div>
@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="ps-3">
                                   <h6>
-                                    <%= data.Findpackeges %>
+                                    <%= data?.Findpackeges %>
                                   </h6>
                                 </div>
                               </div>
@@ -190,23 +190,7 @@
                         </div>
                       </div>
 
-                      <!-- <div class="col-xxl-4 col-md-4">
-                    <div class="card info-card user-card">
-                      <div class="card-body">
-                        <h5 class="card-title">Admin <span>| User</span></h5>
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-currency-dollar"></i>
-                          </div>
-                          <div class="ps-3">
-                            <h6><%= data.user %></h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
-                              class="text-muted small pt-2 ps-1">increase</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
+                     
                 </div>
               </div>
             </div>
