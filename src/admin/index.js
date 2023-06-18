@@ -1,22 +1,20 @@
-const adminRoutes = require("./admin1/route");
+const prefix = "/admin/"
 
-
-const add_saloone = require("./add_saloon/routes");
-const add_service = require("./add_service/routes");
-const add_frequent = require("./add_frequent/routes");
-const order = require("./order/route")
-const add_blog = require("./blog/routes");
-const Counpon = require("./Coupon/route");
-const payment = require("./payment/route");
-const category = require("./category/routes");
-const user = require("./users/route");
-const Artists = require("./Artists/routes");
-const Vacancy = require("./Vacancy/routes");
-const refer = require("./Refer-And-point/routes");
-const Contact = require("./Contact-us/route");
-const package = require("./servicePackage/route");
-const newsletters = require("./newLetter/routes");
-
-module.exports = [adminRoutes, add_saloone, add_service,
-    add_frequent, order, add_blog, category, Counpon, payment,
-    user, Artists, Vacancy, refer, Contact, package, newsletters]
+module.exports = (app) => {
+    app.use(`${prefix}`, require('./admin1/route'));
+    app.use(`${prefix}`, require('./add_saloon/routes'));
+    app.use(`${prefix}`, require('./add_service/routes'));
+    app.use(`${prefix}`, require('./add_frequent/routes'));
+    app.use(`${prefix}`, require('./order/route'));
+    app.use(`${prefix}`, require('./blog/routes'));
+    app.use(`${prefix}`, require('./Coupon/route'));
+    app.use(`${prefix}`, require('./payment/route'));
+    app.use(`${prefix}`, require('./category/routes'));
+    app.use(`${prefix}`, require('./users/route'));
+    app.use(`${prefix}`, require('./Artists/routes'));
+    app.use(`${prefix}`, require('./Vacancy/routes'));
+    app.use(`${prefix}`, require('./Refer-And'));
+    app.use(`${prefix}`, require('./Contact-us'));
+    app.use(`${prefix}`, require('./servicePackage/route'));
+    app.use(`${prefix}`, require('./newLetter/routes'));
+};

@@ -12,7 +12,7 @@ require('./src/datasource/dbConnection');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-require('./src/admin/routes')(app);
+require('./src/admin/')(app);
 
 // server listen
 app.listen(process.env.ADMIN_PORT, () => {
