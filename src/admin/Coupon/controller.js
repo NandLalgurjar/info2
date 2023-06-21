@@ -1,6 +1,6 @@
-// const coupon = require("../../api/coupon/model");
+const coupon = require("../../api/coupon/model");
 const mongoose = require("mongoose");
-// const { getAllSaloonCity } = require("../../api/saloonstore/controller");
+const { getAllSaloonCity } = require("../../api/saloonstore/controller");
 
 exports.Coupon = async (req, res) => {
     try {

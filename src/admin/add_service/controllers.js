@@ -1,9 +1,9 @@
-// const saloon = require("../../api/saloonstore/model");
-// const Category = require("../../api/category/model")
-// const saloonService = require("../../api/saloonService/model")
+const saloon = require("../../api/saloonstore/model");
+const Category = require("../../api/category/model")
+const saloonService = require("../../api/saloonService/model")
 const mongoose = require("mongoose");
 const service = require("./service")
-// const { getAllSaloonCity } = require("../../api/saloonstore/controller")
+const { getAllSaloonCity } = require("../../api/saloonstore/controller")
 
 exports.ADD_SERVICE = async (req, res) => {
     try {

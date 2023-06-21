@@ -1,10 +1,10 @@
-// const saloon = require("../../api/saloonstore/model");
+const saloon = require("../../api/saloonstore/model");
 const service = require("./services")
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-// const saloonRequst = require("../../api/Partner/model")
-// const { getAllSaloonRequistCity, getAllSaloonCity } = require("../../api/saloonstore/controller")
-// const userm = require("../../api/user/model")
+const saloonRequst = require("../../api/Partner/model")
+const { getAllSaloonRequistCity, getAllSaloonCity } = require("../../api/saloonstore/controller")
+const userm = require("../../api/user/model")
 
 
 
@@ -26,13 +26,13 @@ exports.saloonRegister = async (req, res) => {
     }
 }
 
-// const { businessSignUp, businessProfileInfo, businessBankInfo, businessUplodeDocument } = require("../../api/Partner/controller")
+const { businessSignUp, businessProfileInfo, businessBankInfo, businessUplodeDocument } = require("../../api/Partner/controller")
 
 // step 1
 exports.ADD_SALOON_STORE = async (req, res) => {
     try {
         res.locals.message = req.flash()
-        //  console.log("hjvh",req.query,"jh",req.body)
+      //  console.log("hjvh",req.query,"jh",req.body)
         // jghjhn
         const businessSign = await businessSignUp(req)
         if (businessSign.statusCode == 200 && businessSign.status == true) {

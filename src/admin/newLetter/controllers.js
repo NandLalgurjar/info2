@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-// const newsletters = require("../../api/Newsletter/model");
-// const user = require("../../api/user/model");
-// const saloon = require("../../api/saloonstore/model");
-// const ContecUs = require("../../api/Contact-Us/model");
+const newsletters = require("../../api/Newsletter/model");
+const user = require("../../api/user/model");
+const saloon = require("../../api/saloonstore/model");
+const ContecUs = require("../../api/Contact-Us/model");
 
 exports.sendNotification = async (req, res) => {
     try {
@@ -21,7 +21,7 @@ exports.sendNotification = async (req, res) => {
     };
 };
 
-// const { newLetterEmail } = require("../../middleware/mail");
+const { newLetterEmail } = require("../../middleware/mail");
 
 exports.SendAllUserEmail = async (req, res) => {
     try {

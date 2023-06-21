@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-// const { getAllSaloonCity } = require("../../api/saloonstore/controller");
-// const { getCategoryListing } = require("../../api/category/controller")
-// const saloonService = require("../../api/saloonService/model")
+const { getAllSaloonCity } = require("../../api/saloonstore/controller");
+const { getCategoryListing } = require("../../api/category/controller")
+const saloonService = require("../../api/saloonService/model")
 const package = require("./model")
-// const saloon = require("../../api/saloonstore/model")
+const saloon = require("../../api/saloonstore/model")
 
 exports.FindServiceForPackages = async (req, res) => {
     try {

@@ -3,7 +3,7 @@ const { Router } = require("express");
 const app = Router();
 const { allUser, BlockUser, warning, warningPage, unblock, userWalletAction } = require('./controller');
 
-// const { joi_createCoupon } = require("../../middleware/joi_createCoupon");
+const { joi_createCoupon } = require("../../middleware/joi_createCoupon");
 
 app.get("/all-user", auth, allUser)
 app.get("/unblock", auth, unblock)

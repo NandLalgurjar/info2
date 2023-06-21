@@ -1,10 +1,10 @@
-// const user = require("../../api/user/model");
+const user = require("../../api/user/model");
 const mongoose = require("mongoose");
-// const { getAllSaloonCity } = require("../../api/saloonstore/controller");
+const { getAllSaloonCity } = require("../../api/saloonstore/controller");
 const moment = require("moment")
 const { allUser } = require("./services")
-// const { sendmailwarning } = require("../../middleware/mail");
-// const { findOne } = require("../../api/user/model");
+const { sendmailwarning } = require("../../middleware/mail");
+const { findOne } = require("../../api/user/model");
 
 exports.allUser = async (req, res) => {
     try {
@@ -72,7 +72,7 @@ exports.unblock = async (req, res) => {
         console.log(error);
     };
 };
-// const { walletTransaction } = require("../../api/refer And ponts/controller")
+const { walletTransaction } = require("../../api/refer And ponts/controller")
 exports.userWalletAction = async (req, res) => {
     try {
         res.locals.message = req.flash();

@@ -1,5 +1,5 @@
 const auth = require("../../middleware/adminauth");
-const Upload = require("../../middleware/multer");
+const Upload = require("../../middleware/img");
 const { Router } = require("express");
 const app = Router();
 const { ADD_FREQUENT, ADD_FREQUENT_DATA, VIEW_FREQUENT, DELETE_FREQUENT, ViwesFindQustion } = require("./controller");

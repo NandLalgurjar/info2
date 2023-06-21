@@ -1,6 +1,6 @@
 const faqModel = require("./model")
 const mongoose = require("mongoose")
-// const blog = require("../../api/blogs/model")
+const blog = require("../../api/blogs/model")
 
 exports.ADD_FREQUENT = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-// const CategoryModal = require("../../api/category/model");
+const CategoryModal = require("../../api/category/model");
 const mongoose = require('mongoose');
 
 exports.AddCategory = async (req, res, _id) => {

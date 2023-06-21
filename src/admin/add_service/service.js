@@ -1,4 +1,4 @@
-// const saloonService = require("../../api/saloonService/model")
+const saloonService = require("../../api/saloonService/model")
 const mongoose = require("mongoose")
 
 exports.VIEW_SALOON = async (req) => {

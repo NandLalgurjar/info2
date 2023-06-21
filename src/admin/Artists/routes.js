@@ -1,8 +1,8 @@
 const auth = require("../../middleware/adminauth")
-const Upload = require("../../middleware/multer");
+const Upload = require("../../middleware/img");
 const { Router } = require("express");
 const app = Router();
-const { Artists, } = require('./controllers');
+const { Artists,  } = require('./controllers');
 
 app.get("/Artists", auth, Artists)
 
