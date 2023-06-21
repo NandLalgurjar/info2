@@ -117,6 +117,10 @@ exports.forgetPassword = async (req, res) => {
         res.render("users/Forget-Password", { user: req.user })
     } catch (error) {
         console.log(error);
+        return {
+            success: false,
+            message: error.message,
+        };
     };
 }
 
