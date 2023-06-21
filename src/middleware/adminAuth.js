@@ -1,12 +1,14 @@
 const jwt = require("jsonwebtoken")
-const adminModel = require('../model/adminDataModel');
+const userModel = require('../model/userModel');
 
 module.exports = async (req, res, next) => {
   try {
-    if (req.headers.authorization) {
-      const token = req.headers.authorization.split(" ").pop()
-      const { user_id } = jwt.verify(token, process.env.TOKEN_KEY)
-      req.user = await adminModel.findOneAndUpdate({ _id: user_id, isdeleted: false }, { token }, { new: true })
+    if (req.cookies.accessToken) {
+      const token = req.cookies.accessToken
+      const decode = jwt.verify(token, process.env.accessToken);
+      console.log(decode, "data")
+      req.user = await userModel.findOne({ _id: decode._id, isdeleted: false });
+      console.log(req.user)
       if (req.user) {
         next()
       } else {

@@ -10,21 +10,18 @@ const service = require("./service")
 
 exports.admin = async (req, res) => {
     try {
-        console.log(req.cookies)
+        console.log(req.cookies, 123)
         if (req.cookies?.accessToken) {
             const { _id } = jwt.verify(req.cookies.accessToken, process.env.accessToken)
             const user = await userModel.findOne({ _id })
-            // res.locals.message = req.flash();
             if (user) {
                 req.user = user
-                let data;// = await service.AllDetail(req)
+                let data;
                 res.render("users/dashboard", { user, data })
             } else {
-                // res.locals.message = req.flash();
                 res.render("users/login")
             }
         } else {
-            // res.locals.message = req.flash();
             res.render("users/login")
         }
     } catch (error) {
@@ -80,47 +77,39 @@ exports.login = async (req, res) => {
 
 exports.loginData = async (req, res) => {
     try {
-        // res.locals.message = req.flash();
         const { email, password } = req.body;
         if (email) {
             const user = await userModel.findOne({ email: req.body.email });
             console.log(user, "user")
             if (user) {
                 if (typeof user.password === 'undefined') {
-                    // req.flash("error", "Detail is Not Found ");
                     return res.redirect("/admin");
                 };
                 if (user.type != "admin" && user.type != "super-admin") {
-                    // req.flash("error", "your are not eligible to login");
                     return res.redirect("/admin");
                 };
                 const match = await bcrypt.compare(password, user.password);
                 if (match) {
                     const accessToken = jwt.sign({ _id: user._id }, process.env.accessToken);
-                    const refreshToken = jwt.sign({ _id: user._id }, process.env.refreshToken);
-
                     res.cookie("accessToken", accessToken, {
-                        expires: new Date(Date.now() + 10000 * 60 * 60),//1 minit
+                        expires: new Date(Date.now() + 10000 * 60 * 60),
                         httpOnly: true,
                         overwrite: true
-                    }).cookie("refreshToken", refreshToken, {
-                        expires: new Date(Date.now() + 10000 * 60 * 60 * 12),//10 minit
-                        httpOnly: true,
-                        overwrite: true
-                    });
-                    // req.flash("success", "login successfully");
+                    })
                     return res.redirect("/admin");
                 } else {
-                    // req.flash("error", "invalid login details");
                     return res.redirect("/admin");
                 };
             } else {
-                // req.flash("error", "invalid login details");
                 return res.redirect("/admin");
             };
         };
     } catch (error) {
         console.log(error);
+        return {
+            success: false,
+            message: error.message,
+        };
     };
 };
 exports.forgetPassword = async (req, res) => {
@@ -150,49 +139,38 @@ exports.ForgetPassword = async ({ body, user }, res) => {
         }
     } catch (error) {
         console.log(error);
+        return {
+            success: false,
+            message: error.message,
+        };
     };
 };
 
 exports.usersProfile = async (req, res) => {
     try {
-        res.locals.message = req.flash();
         const user = req.user;
         res.render("users/usersProfile", { user });
     } catch (error) {
         console.log(error);
+        return {
+            success: false,
+            message: error.message,
+        };
     };
 };
 exports.add_profile_data = async (req, res) => {
     try {
-        let imagepath;
-        res.locals.message = req.flash();
-        const user = req.user;
-        const id = req.query.id;
-        let obj = {};
-        if (user.image) {
-            imagepath = user.image.split("/");
+        req.body.image = req.file.filename
+        const updatedata = await userModel.findByIdAndUpdate({ _id: req.query.id }, req.body, { new: true });
+        if (updatedata) {
+            res.redirect("/admin")
         }
-
-        if (req.body.name) { obj.name = req.body.name }
-        if (req.body.phone) { obj.phone = req.body.phone }
-        if (req.body.description) { obj.description = req.body.description }
-        if (req.file) {
-            if (user.image) {
-                try {
-                    fs.unlinkSync(`${path.join(__dirname, `/../../../public/uploads/${imagepath[4]}`)}`)
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            obj.image = `http://159.89.164.11:7070/uploads/${req.file.filename}`
-        }
-        const updatedata = await userModel.findByIdAndUpdate(id, obj, { new: true });
-        req.flash("success", "profile updated successfully")
-
-        res.redirect("/")
     } catch (error) {
         console.log(error);
-
+        return {
+            success: false,
+            message: error.message,
+        };
     };
 };
 
@@ -200,8 +178,7 @@ exports.add_profile_data = async (req, res) => {
 exports.AdminlogOut = async (req, res) => {
     try {
         res.clearCookie("accessToken", 'token', { expires: new Date(0) })
-            .clearCookie("refreshToken", 'token', { expires: new Date(0) })
-            .redirect("/");
+            .redirect("/admin");
     } catch (error) {
         console.log(error);
     }

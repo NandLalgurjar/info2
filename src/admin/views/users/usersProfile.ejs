@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>user profile</title>
-
     <%- include('../../partials/headlink.ejs') %>
 </head>
 
@@ -36,7 +35,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Add profile</h5>
 
-                                        <form action="/add_profile_data?id=<%= user._id%>" method="post"
+                                        <form action="/admin/add_profile_data?id=<%= user._id%>" method="post"
                                             enctype="multipart/form-data">
                                             <div class="row g-3">
                                                 <div class="col">
@@ -55,9 +54,7 @@
                                                 <div class="col">
                                                     <label for=""> description</label>
                                                     <textarea class="form-control" name="description"
-                                                        placeholder="Description" style="height: 80px" required>
-                                                        <%= user.description %>
-                                                    </textarea>
+                                                        placeholder="Description" style="height: 80px" required><%= user.description ?user.description:"hello noDescription " %></textarea>
                                                 </div>
                                                 <div class="col">
                                                     <label for=""> Profile image </label>
@@ -82,7 +79,7 @@
                 </section>
             </main>
 
-            <%- include("../../partials/script.ejs") %>
+            <%- include("../../partials/footer.ejs") %>
 </body>
 
 </html>
