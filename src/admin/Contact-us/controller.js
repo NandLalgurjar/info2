@@ -19,9 +19,9 @@ exports.ContactUsRequist = async (req, res) => {
         }
 
         if (req.query.id != undefined && req.query.id != "") {
-            condition._id = mongoose.Types.ObjectId(req.query.id)
+            condition._id = new mongoose.Types.ObjectId(req.query.id)
         }
-        
+
         if (req.query.status != undefined && req.query.status != "") {
             condition.status = Number(req.query.status)
         } else {

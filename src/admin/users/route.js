@@ -1,7 +1,7 @@
 const auth = require("../../middleware/adminauth");
 const { Router } = require("express");
 const app = Router();
-const { allUser, BlockUser, warning, warningPage, unblock, userWalletAction } = require('./controller');
+const { allUser, BlockUser, warning, warningPage, unblock, userWalletAction, AddNewUser } = require('./controller');
 
 const { joi_createCoupon } = require("../../middleware/joi_createCoupon");
 
@@ -11,6 +11,7 @@ app.get("/Block-User", auth, BlockUser)
 app.get("/warningpage", auth, warningPage)
 app.post("/warning", auth, warning)
 app.get("/wallet-Action", auth, userWalletAction)
+app.get("/Add-new-user", auth, AddNewUser)
 
 
 module.exports = app;

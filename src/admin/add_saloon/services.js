@@ -21,7 +21,7 @@ exports.VIEW_SALOON = async (req) => {
       match.type = req.query.gender
     }
     if (req.query.userId != undefined && req.query.userId != "") {
-      match.userId = mongoose.Types.ObjectId(req.query.userId)
+      match.userId = new mongoose.Types.ObjectId(req.query.userId)
     }
     if (req.user.type == "admin") {
       match.userId = req.user._id
@@ -113,7 +113,7 @@ exports.VIEW_SALOON = async (req) => {
     //     'as': 'package'
     //   }
     // })
-    
+
     return await saloon.aggregate(pipeline)
   } catch (error) {
     console.log(error)

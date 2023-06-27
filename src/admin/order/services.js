@@ -7,10 +7,10 @@ exports.getAllOrder = async (req) => {
         let match = {}
         let condition = [];
         if (req.query.userId != undefined && req.query.userId != "") {
-            match.userId = mongoose.Types.ObjectId(req.query.userId)
+            match.userId = new mongoose.Types.ObjectId(req.query.userId)
         }
         if (req.query.orderId != undefined && req.query.orderId != "") {
-            match._id = mongoose.Types.ObjectId(req.query.orderId)
+            match._id = new mongoose.Types.ObjectId(req.query.orderId)
         }
         if (req.query.status != undefined && req.query.status != "") {
             match.status = req.query.status

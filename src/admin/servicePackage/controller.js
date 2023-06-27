@@ -7,7 +7,7 @@ const saloon = require("../../api/saloonstore/model")
 
 exports.FindServiceForPackages = async (req, res) => {
     try {
-        const FindService = await saloonService.find({ saloonStore: mongoose.Types.ObjectId(req.query.saloonId), ServicesType: 0 })
+        const FindService = await saloonService.find({ saloonStore: new mongoose.Types.ObjectId(req.query.saloonId), ServicesType: 0 })
         res.send(FindService)
     } catch (error) {
         console.log(error);
@@ -18,7 +18,7 @@ exports.FindServiceForPackages = async (req, res) => {
 exports.deletePackage = async (req, res) => {
     try {
         if (req.query.id != undefined && req.query.id != "") {
-            const updateData = await saloonService.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.query.id) })
+            const updateData = await saloonService.findByIdAndDelete({ _id: new mongoose.Types.ObjectId(req.query.id) })
             if (updateData) {
                 res.redirect("/view-package");
             };
@@ -51,7 +51,7 @@ exports.addNewPackage = async (req, res) => {
         if (req.query.saloonId != undefined && req.query.saloonId != "") {
             condition.push({
                 '$match': {
-                    '_id': mongoose.Types.ObjectId(req.query.saloonId)
+                    '_id': new mongoose.Types.ObjectId(req.query.saloonId)
                 }
             })
         }
@@ -59,7 +59,7 @@ exports.addNewPackage = async (req, res) => {
         if (req.user.type == "admin") {
             condition.push({
                 '$match': {
-                    'userId': mongoose.Types.ObjectId(req.user._id)
+                    'userId': new mongoose.Types.ObjectId(req.user._id)
                 }
             })
         }
@@ -115,7 +115,7 @@ exports.newPackageCreate = async (req, res) => {
         };
         req.body.ServicesType = 1
         if (req.query.id != undefined && req.query.id != "") {
-            const result = await saloonService.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, req.body, { new: true });
+            const result = await saloonService.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, req.body, { new: true });
             if (result) {
                 res.redirect("/view-package");
             };
@@ -150,7 +150,7 @@ exports.viewPackage = async (req, res) => {
         }
 
         if (req.query.id != undefined && req.query.id != "") {
-            match.saloonStore = mongoose.Types.ObjectId(req.query.id)
+            match.saloonStore = new mongoose.Types.ObjectId(req.query.id)
         }
         match.ServicesType = 1
 
@@ -277,7 +277,7 @@ exports.findPackageServices = async (req, res) => {
         const data = await saloonService.aggregate([
             {
                 '$match': {
-                    '_id': mongoose.Types.ObjectId(req.query.id)
+                    '_id': new mongoose.Types.ObjectId(req.query.id)
                 }
             }, {
                 '$lookup': {

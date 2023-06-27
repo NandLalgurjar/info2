@@ -20,7 +20,7 @@ exports.ADD_BLOG_STORE = async (req, res) => {
         res.locals.message = req.flash();
         if (query.id) {
 
-            let _id = mongoose.Types.ObjectId(query.id);
+            let _id = new mongoose.Types.ObjectId(query.id);
             const result = await blog.findOne({ _id });
             if (result) {
                 let obj = {};
@@ -58,7 +58,7 @@ exports.ADD_BLOG_STORE = async (req, res) => {
                 WriteDate: body.WriteDate,
                 Description: body.description,
                 image: body.image,
-                category: mongoose.Types.ObjectId(body.category)
+                category: new mongoose.Types.ObjectId(body.category)
             });
             const result = await blog_details.save();
             res.send()
@@ -100,7 +100,7 @@ exports.DELETE_BLOG = async (req, res) => {
 
 exports.ViwesFindBlog = async (req, res) => {
     try {
-        const data = await blog.find({ _id: mongoose.Types.ObjectId(req.query.id) });
+        const data = await blog.find({ _id: new mongoose.Types.ObjectId(req.query.id) });
         res.send(data)
     } catch (error) {
         console.log(error)

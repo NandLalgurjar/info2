@@ -2,7 +2,7 @@ const user = require("../../api/user/model");
 const mongoose = require("mongoose");
 const { getAllSaloonCity } = require("../../api/saloonstore/controller");
 const moment = require("moment")
-const { allUser } = require("./services")
+const { allUser, AddNewUser } = require("./services")
 const { sendmailwarning } = require("../../middleware/mail");
 const { findOne } = require("../../api/user/model");
 
@@ -21,7 +21,7 @@ exports.allUser = async (req, res) => {
 
 exports.BlockUser = async (req, res) => {
     try {
-        const Finddata = await user.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, { type: "block-User" }, { new: true })
+        const Finddata = await user.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, { type: "block-User" }, { new: true })
         if (Finddata) {
             res.redirect("/all-user")
         }
@@ -31,7 +31,7 @@ exports.BlockUser = async (req, res) => {
 };
 exports.warningPage = async (req, res) => {
     try {
-        const data = await user.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const data = await user.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         res.render("users/warning", { id: req.query.id, data, user: req.user })
     } catch (error) {
         console.log(error);
@@ -41,7 +41,7 @@ exports.warningPage = async (req, res) => {
 exports.warning = async (req, res) => {
     try {
         res.locals.message = req.flash();
-        req.userData = await user.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        req.userData = await user.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         const sendmailer = await sendmailwarning(req)
         if (sendmailer) {
             req.flash("success", "mail send successfully")
@@ -58,11 +58,11 @@ exports.unblock = async (req, res) => {
     try {
         let Finddata;
         res.locals.message = req.flash();
-        const data = await user.findOne({ _id: mongoose.Types.ObjectId(req.query.id) });
+        const data = await user.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) });
         if (data.type == "block-User") {
-            Finddata = await user.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, { type: "user" }, { new: true })
+            Finddata = await user.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, { type: "user" }, { new: true })
         } else {
-            Finddata = await user.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, { type: "admin" }, { new: true })
+            Finddata = await user.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, { type: "admin" }, { new: true })
         }
         req.flash("success", "unblock successfully")
         if (Finddata) {
@@ -80,7 +80,7 @@ exports.userWalletAction = async (req, res) => {
         obj.$inc = {};
 
         if (req.query.status == "debit") {
-            const findUser = await user.findOne({ _id: mongoose.Types.ObjectId(req.query.id) });
+            const findUser = await user.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) });
 
             if (req.query.type == "point") {
                 if (findUser.userWallet.point >= req.query.amount) {
@@ -123,5 +123,16 @@ exports.userWalletAction = async (req, res) => {
         };
     } catch (error) {
         console.log(error);
+    };
+};
+
+
+exports.AddNewUser = async (req, res) => {
+    try {
+        let data;
+        res.render("users/AddNewUser", { data, user: req.user })
+    } catch (error) {
+        console.log(error);
+        res.redirect("/");
     };
 };

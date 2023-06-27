@@ -130,7 +130,7 @@ exports.DeletePayment = async (req, res) => {
         //  uska order bhi cencal hogha paise 
         // user ke welloth me add hoghe yaa return hoghe 
         if (req.query.id != undefined && req.query.id != "") {
-            const updateData = await payment.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.query.id) })
+            const updateData = await payment.findByIdAndDelete({ _id: new mongoose.Types.ObjectId(req.query.id) })
             if (updateData) {
                 res.redirect("/view-all-payment");
             };

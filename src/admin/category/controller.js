@@ -11,7 +11,7 @@ exports.Category = async (req, res) => {
         if (req.query.id != undefined && req.query.id != "") {
             res.render("category/index", { user: req.user, id: req.query.id })
         } else if (req.query.EditId != undefined && req.query.EditId !== "") {
-            const findData = await CategoryModule.findOne({ _id: mongoose.Types.ObjectId(req.query.EditId) })
+            const findData = await CategoryModule.findOne({ _id: new mongoose.Types.ObjectId(req.query.EditId) })
             res.render("category/index", { user: req.user, data: findData })
         } else {
             res.render("category/index", { user: req.user })
@@ -75,7 +75,7 @@ exports.DeleteCategory = async (req, res) => {
         if (req.user.type == "admin") {
             return res.redirect("/")
         }
-        const result = await CategoryModule.findByIdAndRemove({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const result = await CategoryModule.findByIdAndRemove({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (result) {
             res.redirect("/view-category")
         } else {

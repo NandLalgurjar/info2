@@ -12,7 +12,7 @@ exports.ADD_SERVICE = async (req, res) => {
         const category = await Category.find({ parent_Name: null, type: 0 })
         let saloon_data;
         if (req.query.saloonId != undefined && req.query.saloonId != "") {
-            saloon_data = await saloon.find({ _id: mongoose.Types.ObjectId(req.query.saloonId) })
+            saloon_data = await saloon.find({ _id: new mongoose.Types.ObjectId(req.query.saloonId) })
         } else {
             saloon_data = await saloon.find()
         }
@@ -20,7 +20,7 @@ exports.ADD_SERVICE = async (req, res) => {
         let pipeline = []
         pipeline.push({
             $match: {
-                _id: mongoose.Types.ObjectId(_id)
+                _id: new mongoose.Types.ObjectId(_id)
             }
         }, {
             '$addFields': {
@@ -49,7 +49,7 @@ exports.optiongeturl = async (req, res) => {
     try {
         const parent_id = req.query.select
         if (parent_id != undefined && parent_id.length == 24) {
-            const _id = mongoose.Types.ObjectId(parent_id)
+            const _id = new mongoose.Types.ObjectId(parent_id)
 
             const sub_category = await Category.find({ parent_Name: _id })
             const userdata = []
@@ -73,7 +73,7 @@ exports.ADD_SERVICE_STORE = async (req, res) => {
         let { body, files, query } = req;
         res.locals.message = req.flash();
         if (query.id) {
-            let _id = mongoose.Types.ObjectId(query.id);
+            let _id = new mongoose.Types.ObjectId(query.id);
             const result = await saloonService.findOne({ _id });
             if (result) {
                 let obj = {};
@@ -83,8 +83,8 @@ exports.ADD_SERVICE_STORE = async (req, res) => {
                 if (body.type) { obj.type = body.type };
                 if (body.description) { obj.description = body.description };
                 if (body.category) { obj.category = body.category };
-                if (body.saloonStore) { obj.saloonStore = mongoose.Types.ObjectId(body.saloonStore) };
-                if (body.last_category) { obj.last_category = mongoose.Types.ObjectId(body.last_category) };
+                if (body.saloonStore) { obj.saloonStore = new mongoose.Types.ObjectId(body.saloonStore) };
+                if (body.last_category) { obj.last_category = new mongoose.Types.ObjectId(body.last_category) };
                 if (files.length > 0) {
                     img = []
                     files.forEach(element => {
@@ -105,7 +105,7 @@ exports.ADD_SERVICE_STORE = async (req, res) => {
         } else {
             const { ServiceName } = body;
             if (ServiceName) {
-                const result = await saloonService.find({ ServiceName, saloonStore: mongoose.Types.ObjectId(body.saloonStore) });
+                const result = await saloonService.find({ ServiceName, saloonStore: new mongoose.Types.ObjectId(body.saloonStore) });
                 for (const item of result) {
                     if (item.ServicePrice == Number(body.ServicePrice)) {
                         if (item.timePeriod_in_minits == Number(body.timePeriod_in_minits)) {
@@ -143,8 +143,8 @@ exports.ADD_SERVICE_STORE = async (req, res) => {
                 description: body.description,
                 image: body.image,
                 category: body.category,
-                saloonStore: mongoose.Types.ObjectId(body.saloonStore),
-                last_category: mongoose.Types.ObjectId(last_category)
+                saloonStore: new mongoose.Types.ObjectId(body.saloonStore),
+                last_category: new mongoose.Types.ObjectId(last_category)
             });
             const result = await service_details.save();
             if (result) {
@@ -193,7 +193,7 @@ exports.FindAllServiceName = async (req) => {
 }
 exports.findSallon = async (req, res) => {
     try {
-        const data = await saloon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) }, { type: 1, storeName: 1 })
+        const data = await saloon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) }, { type: 1, storeName: 1 })
         res.send(data)
     } catch (error) {
         console.log(error)

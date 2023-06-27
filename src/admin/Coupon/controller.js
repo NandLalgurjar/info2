@@ -8,7 +8,7 @@ exports.Coupon = async (req, res) => {
             return res.redirect("/")
         }
         if (req.query.id != undefined && req.query.id != "") {
-            const Coupon = await coupon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) });
+            const Coupon = await coupon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) });
             if (Coupon) {
                 res.render("Coupon/index", { user: req.user, Coupon });
             }
@@ -23,7 +23,7 @@ exports.Coupon = async (req, res) => {
 exports.createCoupon = async (req, res) => {
     try {
         if (req.query.id != undefined && req.query.id != "") {
-            const _id = mongoose.Types.ObjectId(req.query.id);
+            const _id = new mongoose.Types.ObjectId(req.query.id);
 
             const updateData = await coupon.findByIdAndUpdate({ _id }, req.body, { new: true });
             if (updateData) {
@@ -89,7 +89,7 @@ exports.DeleteCoupon = async (req, res) => {
             return res.redirect("/")
         }
         if (req.query.id != undefined && req.query.id != "") {
-            const updateData = await coupon.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.query.id) })
+            const updateData = await coupon.findByIdAndDelete({ _id: new mongoose.Types.ObjectId(req.query.id) })
             if (updateData) {
                 res.redirect("/View-All-Coupon");
             };

@@ -6,7 +6,7 @@ exports.ViewVacancy = async (req) => {
     if (req.query.id != undefined && req.query.id != "") {
         pipeline.push({
             '$match': {
-                '_id': mongoose.Types.ObjectId(req.query.id)
+                '_id': new mongoose.Types.ObjectId(req.query.id)
             }
         })
     }

@@ -33,7 +33,7 @@ exports.Vacancy = async (req, res) => {
 
 exports.FindserviceforAdmin = async (req, res) => {
     try {
-        const data = await seloonservice.find({ category: { $in: mongoose.Types.ObjectId(req.query.id) } })
+        const data = await seloonservice.find({ category: { $in: new mongoose.Types.ObjectId(req.query.id) } })
         res.send(data)
     } catch (error) {
         console.log(error)
@@ -59,7 +59,7 @@ exports.addVacency = async (req, res) => {
         req.body.userId = req.user._id;
 
         if (req.query.id != undefined && req.query.id != "") {
-            const result = await vacancy.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) })
+            const result = await vacancy.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) })
             if (result) {
                 res.redirect("/View-Vacancy");
             };

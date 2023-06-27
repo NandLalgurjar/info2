@@ -13,7 +13,7 @@ exports.VIEW_SALOON = async (req) => {
   }
 
   if (req.query.id != undefined && req.query.id != "") {
-    match.saloonStore = mongoose.Types.ObjectId(req.query.id)
+    match.saloonStore = new mongoose.Types.ObjectId(req.query.id)
   }
   match.ServicesType = 0
 

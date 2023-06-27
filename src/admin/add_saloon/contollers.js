@@ -16,8 +16,8 @@ exports.saloonRegister = async (req, res) => {
         }
         res.locals.message = req.flash()
         let saloon_data;
-        const find_saloon_data = await saloon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
-        const find_saloon_requist = await saloonRequst.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const find_saloon_data = await saloon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
+        const find_saloon_requist = await saloonRequst.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (find_saloon_data) { saloon_data = find_saloon_data }
         if (find_saloon_requist) { saloon_data = find_saloon_requist }
         res.render("add_saloon/saloon-Register", { user: req.user, data: saloon_data })
@@ -32,7 +32,7 @@ const { businessSignUp, businessProfileInfo, businessBankInfo, businessUplodeDoc
 exports.ADD_SALOON_STORE = async (req, res) => {
     try {
         res.locals.message = req.flash()
-      //  console.log("hjvh",req.query,"jh",req.body)
+        //  console.log("hjvh",req.query,"jh",req.body)
         // jghjhn
         const businessSign = await businessSignUp(req)
         if (businessSign.statusCode == 200 && businessSign.status == true) {
@@ -53,8 +53,8 @@ exports.businessProfile = async (req, res) => {
     try {
         res.locals.message = req.flash();
         let find;
-        const findSaloonRequst = await saloonRequst.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
-        const findSaloon = await saloon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const findSaloonRequst = await saloonRequst.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
+        const findSaloon = await saloon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (findSaloonRequst) { find = findSaloonRequst }
         if (findSaloon) { find = findSaloon }
         const businessP = await businessProfileInfo(req)
@@ -75,8 +75,8 @@ exports.businessBankInfoAdmin = async (req, res) => {
     try {
         res.locals.message = req.flash()
         let find;
-        const findSaloonRequst = await saloonRequst.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
-        const findSaloon = await saloon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const findSaloonRequst = await saloonRequst.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
+        const findSaloon = await saloon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (findSaloonRequst) { find = findSaloonRequst }
         if (findSaloon) { find = findSaloon }
 
@@ -98,8 +98,8 @@ exports.businessUplodeDocumentAdmin = async (req, res) => {
     try {
         res.locals.message = req.flash()
         let find;
-        const findSaloonRequst = await saloonRequst.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
-        const findSaloon = await saloon.findOne({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const findSaloonRequst = await saloonRequst.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
+        const findSaloon = await saloon.findOne({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (findSaloonRequst) { find = findSaloonRequst }
         if (findSaloon) { find = findSaloon }
 
@@ -143,7 +143,7 @@ exports.DELETE_SALOON = async (req, res) => {
 
 exports.GetSaloonAddress = async (req, res) => {
     try {
-        const FindData = await saloon.find({ _id: mongoose.Types.ObjectId(req.query.id) })
+        const FindData = await saloon.find({ _id: new mongoose.Types.ObjectId(req.query.id) })
         if (FindData) {
             res.send(FindData)
         }
@@ -221,7 +221,7 @@ exports.viewsSaloonRequest = async (req, res) => {
 exports.saloonApproval = async (req, res) => {
     try {
         if (req.query.id != undefined && req.query.id != "") {
-            const _id = mongoose.Types.ObjectId(req.query.id)
+            const _id = new mongoose.Types.ObjectId(req.query.id)
             const findSloonRequist = await saloonRequst.findOne({ _id })
 
             let ovh = {};
@@ -293,7 +293,7 @@ exports.saloonRequistDelete = async (req, res) => {
     try {
         res.locals.message = req.flash();
         if (req.query.id != undefined && req.query.id != "") {
-            const _id = mongoose.Types.ObjectId(req.query.id)
+            const _id = new mongoose.Types.ObjectId(req.query.id)
             const result = await saloonRequst.findByIdAndDelete({ _id })
             if (result) {
                 req.flash("success", " request approvel succesfully !")
@@ -311,7 +311,7 @@ exports.saloonRequistDelete = async (req, res) => {
 exports.findAddSaloonRequist = async (req, res) => {
     try {
         const id = req.query.id
-        const FindData = await saloonRequst.find({ _id: mongoose.Types.ObjectId(id) })
+        const FindData = await saloonRequst.find({ _id: new mongoose.Types.ObjectId(id) })
         if (FindData) {
             res.send(FindData)
         }
@@ -345,7 +345,7 @@ exports.findSaloonByUser = async (req, res) => {
         // const upfate = await userm.updateMany({ _id: { $nin: arrr }, type: { $ne: "block-User" }, type: { $ne: "super-admin" } }, { type: "user" })
         // jghj
 
-        const findSaloon = await saloon.find({ userId: mongoose.Types.ObjectId(req.query.id) })
+        const findSaloon = await saloon.find({ userId: new mongoose.Types.ObjectId(req.query.id) })
 
     } catch (error) {
         console.log(error)
@@ -371,7 +371,7 @@ exports.addImagesInSaloon = async (req, res) => {
         req.files.forEach(element => {
             arr.push(`http://159.89.164.11:7070/uploads/${element.filename}`)
         });
-        const result = await saloon.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, { image: arr }, { new: true })
+        const result = await saloon.findOneAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, { image: arr }, { new: true })
         if (result) {
             res.redirect("/")
         }

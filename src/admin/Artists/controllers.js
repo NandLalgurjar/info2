@@ -13,7 +13,7 @@ exports.Artists = async (req, res) => {
         if (req.query.id != undefined && req.query.id != "") {
             condition.push({
                 '$match': {
-                    '_id': mongoose.Types.ObjectId(req.query.id)
+                    '_id': new mongoose.Types.ObjectId(req.query.id)
                 }
             })
         }

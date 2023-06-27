@@ -28,7 +28,7 @@ const { paymentsRefund } = require("../../api/payment/controller")
 exports.orderCancel = async (req, res) => {
     try {
         if (req.query.id) {
-            const _id = mongoose.Types.ObjectId(req.query.id);
+            const _id = new mongoose.Types.ObjectId(req.query.id);
             const findOrder = await order.findOne({ _id });
             if (findOrder) {
                 const orderCencal = await order.findByIdAndUpdate({ _id }, { status: "cancel" }, { new: true })
@@ -58,7 +58,7 @@ exports.orderCancel = async (req, res) => {
 exports.AdminOrderApprove = async (req, res) => {
     try {
         if (req.query.id) {
-            const _id = mongoose.Types.ObjectId(req.query.id);
+            const _id = new mongoose.Types.ObjectId(req.query.id);
             const findOrder = await order.findOne({ _id });
             if (findOrder) {
                 const orderCencal = await order.findByIdAndUpdate({ _id }, { status: "succes" }, { new: true })
@@ -84,7 +84,7 @@ exports.FindDateForAdminModule = async (req, res) => {
         const FindData = await order.aggregate([
             {
                 '$match': {
-                    '_id': mongoose.Types.ObjectId(req.query.id)
+                    '_id': new mongoose.Types.ObjectId(req.query.id)
                 }
             }, {
                 '$project': {

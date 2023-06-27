@@ -9,7 +9,7 @@ exports.allUser = async (req, res) => {
         }
 
         if (req.query.referId != undefined && req.query.referId != "") {
-            serchobj.referId = mongoose.Types.ObjectId(req.query.referId)
+            serchobj.referId = new mongoose.Types.ObjectId(req.query.referId)
         }
 
         if (req.query.email != undefined && req.query.email != "") {
@@ -94,5 +94,14 @@ exports.allUser = async (req, res) => {
         console.log(error);
     };
 };
+
+exports.AddNewUser = async (req) => {
+    try {
+        console.log(12345, gfc);
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
 
 

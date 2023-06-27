@@ -22,7 +22,7 @@ exports.pointAndRupee = async (req, res) => {
         res.locals.message = req.flash();
         let result;
         if (req.query.id != undefined && req.query.id != "") {
-            result = await refer.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(req.query.id) }, req.body, { new: true });
+            result = await refer.findByIdAndUpdate({ _id: new mongoose.Types.ObjectId(req.query.id) }, req.body, { new: true });
             if (result) {
                 req.flash("success", "update succsfully");
                 res.redirect("/View-Refer-Earn");
@@ -58,7 +58,7 @@ exports.ViewReferEarn = async (req, res) => {
 
 exports.deletReferEranProgram = async (req, res) => {
     try {
-        const data = await refer.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.query.id) });
+        const data = await refer.findByIdAndDelete({ _id: new mongoose.Types.ObjectId(req.query.id) });
         res.redirect("/View-Refer-Earn")
     } catch (error) {
         console.log(error);

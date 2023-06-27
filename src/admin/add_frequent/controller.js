@@ -43,7 +43,7 @@ exports.VIEW_FREQUENT = async (req, res) => {
         if (req.query.id != undefined && req.query.id != "") {
             condition.push({
                 '$match': {
-                    'blogId': mongoose.Types.ObjectId(req.query.id)
+                    'blogId': new mongoose.Types.ObjectId(req.query.id)
                 }
             })
         }
@@ -97,7 +97,7 @@ exports.ADD_FREQUENT_DATA = async (req, res) => {
 
 exports.ViwesFindQustion = async (req, res) => {
     try {
-        const data = await faqModel.find({ _id: mongoose.Types.ObjectId(req.query.id) });
+        const data = await faqModel.find({ _id: new mongoose.Types.ObjectId(req.query.id) });
         res.send(data);
     } catch (err) {
         console.log(err);
