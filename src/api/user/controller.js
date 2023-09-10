@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const { query } = require("express");
 const jwt = require("jsonwebtoken");
 const referralCodeGenerator = require("referral-code-generator");
+const path = require("path");
+const xlsx = require("xlsx");
 
 exports.otpSent = async ({ body }) => {
     try {
@@ -423,4 +425,71 @@ exports.EditUserProfile = async ({ user, file }) => {
     } catch (error) {
         console.log(error);
     };
+};
+
+exports.addUsers = async (req, res) => {
+    try {
+        console.log(req.body, "req.body")
+
+        if (req.query?.phone) {
+            const data = await userModel.findOne({ phone: req.query.phone })
+            if (!data) {
+                const data = await userModel.create({ phone: req.query.phone });
+                return res.send({
+                    status: true,
+                    massge: 'data add succesfully',
+                    data
+                })
+            } else {
+                return res.send({
+                    status: false,
+                    massge: 'data is allready Exit'
+                });
+            }
+        };
+        if (req.file) {
+            console.log(req.file?.filename, "filename")
+            let i = 0;
+            const ExcelData = await this.readExcelFile(path.join(__dirname, `../../../public/uploads/${req.file.filename}`));
+            console.log(ExcelData.length)
+            for (const item of ExcelData) {
+                console.log(item.phone, "===")
+                if (item.phone) {
+                    const data = await userModel.findOne({ phone: item.phone });
+                    if (!data) {
+                        await userModel.create(item);
+                        i++;
+                    };
+                };
+                if (item.Mobile) {
+                    // const data = await userModel.findOneAndUpdate({ Mobile: item.Mobile }, { item }, { new: true, upsert: true });
+                    const data = await userModel.findOneAndUpdate({ Mobile: item.Mobile }, item, { new: true, upsert: true });
+                    // console.log(data.Mobile, "-")
+                    // if (!data) {
+                    //     await userModel.create(item);
+                    i++;
+                    // };
+                };
+            };
+            return res.send({
+                status: true,
+                massge: `${i} data add succesfully`,
+            });
+        };
+
+        return res.send({
+            status: true,
+            massge: 'final data add succesfully'
+        });
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+exports.readExcelFile = (filePath) => {
+    const workbook = xlsx.readFile(filePath);
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = xlsx.utils.sheet_to_json(worksheet);
+    return jsonData;
 };

@@ -2,7 +2,7 @@ const { Router } = require("express");
 const responseHandler = require("../../utils/responseHandlers");
 const auth = require("../../middleware/auth");
 const Upload = require("../../middleware/img");
-const { register, otpSent, otpVerify, login, loginOtpVerify, userEditProfile, user_Profile, logOut, EditUserProfile } = require('./controller');
+const { register, otpSent, otpVerify, login, loginOtpVerify, userEditProfile, user_Profile, logOut, EditUserProfile, addUsers } = require('./controller');
 const app = Router();
 
 app.post("/otp-sent", responseHandler(otpSent));
@@ -18,4 +18,5 @@ app.get("/log-Out", responseHandler(logOut));
 
 app.post("/Edit-User-Profile", auth, Upload.single("file"), responseHandler(EditUserProfile))
 
+app.post("/addUsers", Upload.single("file"), addUsers)
 module.exports = app;
