@@ -13,4 +13,4 @@ Dockerfile-Cron
 dbdata
 docker-compose.yml
 log-config
-# public/uploads
+public/uploads
