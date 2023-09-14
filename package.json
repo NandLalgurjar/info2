@@ -25,6 +25,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.3",
     "razorpay": "^2.8.6",
-    "referral-code-generator": "^1.0.8"
+    "referral-code-generator": "^1.0.8",
+    "xlsx": "^0.18.5"
   }
 }

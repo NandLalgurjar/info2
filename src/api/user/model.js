@@ -6,6 +6,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
+  companyName: {
+    type: String,
+    default: ""
+  },
+  rating: {
+    type: String,
+    default: ""
+  },
   email: {
     type: String,
     default: ""
@@ -13,6 +21,10 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
     default: null
+  },
+  Mobile: {
+    type: String,
+    default: ""
   },
   gender: {
     type: String,
@@ -80,7 +92,27 @@ const userSchema = new mongoose.Schema({
       default: ""
     },
   },
+  MapeLocation: {
+    type: String,
+    default: ""
+  },
+  description: {
+    type: String,
+    default: ""
+  },
+  address: {
+    type: String,
+    default: ""
+  },
   auth: {
+    type: String,
+    default: ""
+  },
+  website: {
+    type: String,
+    default: ""
+  },
+  companyStatus: {
     type: String,
     default: ""
   },
