@@ -1,0 +1,288 @@
+[{
+  "_id": {
+    "$oid": "63eb0aa3a4b2d2e084cfa873"
+  },
+  "name": null,
+  "phone": {
+    "$numberLong": "9148468409"
+  },
+  "image": [],
+  "verify": false,
+  "otp": "",
+  "__v": 0,
+  "updatedAt": {
+    "$date": "2023-04-11T05:09:07.392Z"
+  },
+  "type": "admin",
+  "gender": "male",
+  "userWallet": {
+    "balance": 0,
+    "point": 0
+  },
+  "referCode": "ONLINE726049",
+  "referId": null
+},
+{
+  "_id": {
+    "$oid": "63edcfe963019ceacb729327"
+  },
+  "name": "Prashant Tiwari ",
+  "phone": {
+    "$numberLong": "8877777777"
+  },
+  "image": "http://159.89.164.11:7070/uploads/file-1682401691588Screenshot (1).png",
+  "verify": true,
+  "otp": "",
+  "__v": 0,
+  "email": "prashant@gmail.com",
+  "password": "$2b$10$99Drx4I.iTBWbmk.0YnGKu8AvpsNhiySLH5xntuNnDSeSy8G6CviO",
+  "dateOfBirth": {
+    "$date": "2023-02-09T00:00:00.000Z"
+  },
+  "gender": "male",
+  "updatedAt": {
+    "$date": "2023-05-08T07:41:54.182Z"
+  },
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VkY2ZlOTYzMDE5Y2VhY2I3MjkzMjciLCJpYXQiOjE2ODMyODY1NTV9.g6agns92w_1xZNX_1kXt4mnj_5oO2pSxhlqVJFsO9bo",
+  "type": "admin",
+  "userWallet": {
+    "balance": 230,
+    "point": 11900,
+    "useBalance": 560
+  },
+  "referCode": "ONLINE392602",
+  "referId": null
+},
+{
+  "_id": {
+    "$oid": "640970947e17666bb7922dbd"
+  },
+  "name": "Punit saini",
+  "email": "punitsaini.img@gmail.com",
+  "phone": 1234567897,
+  "type": "admin",
+  "password": "$2b$10$wIsf3sSM7ewg7dra2WBAA.M5iiXgPa0VnOauRSC3QfJTlAQ42pxrq",
+  "verify": false,
+  "createdAt": {
+    "$date": "2023-03-09T05:37:24.584Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-11T05:09:11.207Z"
+  },
+  "__v": 0,
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA5NzA5NDdlMTc2NjZiYjc5MjJkYmQiLCJpYXQiOjE2NzkzMDc0NTl9.dktFY-n-B5Vn-GhpY45MawKyU1-mBBa9tfSk-vI0MT0",
+  "gender": "female",
+  "userWallet": {
+    "balance": 0,
+    "point": 0
+  },
+  "referCode": "ONLINE693330",
+  "referId": null
+},
+{
+  "_id": {
+    "$oid": "6409740fe58527effd882bb5"
+  },
+  "name": "nand lal gurjar",
+  "email": "nandlalnk@gmail.com",
+  "phone": {
+    "$numberLong": "6367081279"
+  },
+  "type": "admin",
+  "password": "$2b$10$f7YeUK2qrMSGFgBo5ymY1ekMwxihpK6PZ3rMFJa4anMXgCUoLGFdS",
+  "verify": false,
+  "createdAt": {
+    "$date": "2023-03-09T05:52:15.566Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-07T09:54:40.909Z"
+  },
+  "__v": 0,
+  "dateOfBirth": {
+    "$date": "2023-02-09T18:30:00.000Z"
+  },
+  "gender": "male",
+  "image": "http://159.89.164.11:7070/uploads/image-1679371200777nandlal.jpg",
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA5NzQwZmU1ODUyN2VmZmQ4ODJiYjUiLCJpYXQiOjE2ODg3MjM2NTR9.o7JjpHj7o-bBju0gfCcE5g3XmtArkY1UKKqzDlSr3QY",
+  "userWallet": {
+    "balance": 0,
+    "point": 0
+  },
+  "referCode": "ONLINE402075",
+  "referId": null,
+  "otp": "1234"
+},
+{
+  "_id": {
+    "$oid": "641afb311c7c75d270d5dedb"
+  },
+  "name": "super admin",
+  "phone": -894964972,
+  "type": "super-admin",
+  "verify": true,
+  "otp": "1234",
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFhZmIzMTFjN2M3NWQyNzBkNWRlZGIiLCJpYXQiOjE2OTQwNjEwNjl9.qOn7Qd6AniqRUBDDGT0g05_pA9ZxvA1EP1cE7LeNKPs",
+  "createdAt": {
+    "$date": "2023-03-22T12:08:12.088Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-07T04:34:09.956Z"
+  },
+  "__v": 0,
+  "email": "superAdmin@gmail.com",
+  "password": "$2b$10$GYB8ZvL3Jnr0mAYZ/n82ne0fnfG7zqkTW.wPsWIjhQT9gj0sms0LC",
+  "dateOfBirth": {
+    "$date": "2023-03-23T00:00:00.000Z"
+  },
+  "gender": "male",
+  "userWallet": {
+    "balance": 1000000134,
+    "point": 489
+  },
+  "referCode": "ONLINE339259",
+  "referalDetails": {
+    "referalAmount": 1000,
+    "referaType": "point"
+  },
+  "referId": null,
+  "image": "http://159.89.164.11:7070/uploads/image-1688012318744img.jpeg",
+  "description": "test for working"
+},
+{
+  "_id": {
+    "$oid": "6426859d5261aacb1770bd1a"
+  },
+  "name": "Shibu Dube",
+  "phone": {
+    "$numberLong": "8953286101"
+  },
+  "type": "admin",
+  "verify": true,
+  "otp": "",
+  "location": {
+    "aria": "",
+    "pincode": "",
+    "city": "raj",
+    "state": ""
+  },
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDI2ODU5ZDUyNjFhYWNiMTc3MGJkMWEiLCJpYXQiOjE2ODY1NTk4NTl9.FZvG1KyxJCPqyJb-DsiEUC1gJtBhEua0zHfFuOz0J3o",
+  "createdAt": {
+    "$date": "2023-03-31T07:02:53.971Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-15T08:11:38.325Z"
+  },
+  "__v": 0,
+  "email": "shibu07@gmail.com",
+  "password": "$2b$10$sJ4HtCXSAVtWBLUqre2JrOrM1i2A.7ArJx0Jb3/DFi59JHN.Oi6DS",
+  "image": "http://159.89.164.11:7070/uploads/file-1685937455832Screenshot 2023-04-13 152424.png",
+  "userWallet": {
+    "balance": 0,
+    "point": 0
+  },
+  "dateOfBirth": {
+    "$date": "2002-08-31T18:30:00.000Z"
+  },
+  "gender": "male",
+  "referCode": "ONLINE242458",
+  "referId": null
+},
+{
+  "_id": {
+    "$oid": "642cf5561af772fc5489f64a"
+  },
+  "name": "Sk24 saloon12",
+  "email": "Sk24saloon12@gmail.com",
+  "phone": {
+    "$numberLong": "9965895698"
+  },
+  "type": "admin",
+  "verify": false,
+  "location": {
+    "aria": "",
+    "pincode": "",
+    "city": "",
+    "state": ""
+  },
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDJjZjU1NjFhZjc3MmZjNTQ4OWY2NGEiLCJpYXQiOjE2ODMwOTEwNjl9.n-W4wbHpOSRQMoe4W256E9UDI6ahvJqkz5AtiqohhrA",
+  "createdAt": {
+    "$date": "2023-04-05T04:13:10.042Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-03T07:24:35.470Z"
+  },
+  "__v": 0,
+  "userWallet": {
+    "balance": 0,
+    "point": 0
+  },
+  "referCode": "ONLINE792029",
+  "referId": null,
+  "password": "$2b$10$f7YeUK2qrMSGFgBo5ymY1ekMwxihpK6PZ3rMFJa4anMXgCUoLGFdS"
+},
+{
+  "_id": {
+    "$oid": "64477b7e5c06946b295d5440"
+  },
+  "name": "Mirza",
+  "email": "Mirzasaloon@gmail.com",
+  "phone": {
+    "$numberLong": "8558789845"
+  },
+  "gender": "",
+  "type": "admin",
+  "dateOfBirth": null,
+  "image": "",
+  "verify": false,
+  "userWallet": {
+    "balance": 0,
+    "point": 0,
+    "useBalance": 0
+  },
+  "location": {
+    "aria": "",
+    "pincode": "",
+    "city": "",
+    "state": ""
+  },
+  "auth": "",
+  "referCode": "",
+  "referId": null,
+  "createdAt": {
+    "$date": "2023-04-25T07:04:30.991Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-25T07:04:30.991Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63e4b073a3bf40a7386bad18"
+  },
+  "name": "nitesh",
+  "phone": {
+    "$numberLong": "9680605659"
+  },
+  "email": "snitesh@gmail.com",
+  "password": "$2b$10$f7YeUK2qrMSGFgBo5ymY1ekMwxihpK6PZ3rMFJa4anMXgCUoLGFdS",
+  "otp": "",
+  "__v": 0,
+  "type": "admin",
+  "updatedAt": {
+    "$date": "2023-06-01T04:25:37.345Z"
+  },
+  "gender": "male",
+  "userWallet": {
+    "balance": 558,
+    "point": 604,
+    "useBalance": 750
+  },
+  "referCode": "ONLINE825602",
+  "referId": null,
+  "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U0YjA3M2EzYmY0MGE3Mzg2YmFkMTgiLCJpYXQiOjE2ODU1OTM1Mzd9.kU6WjJhTnXNsZBJ_xmm6M9O6yZmaXRd5QiM-xHklxI8",
+  "dateOfBirth": {
+    "$date": "2023-04-24T00:00:00.000Z"
+  },
+  "image": "http://159.89.164.11:7070/uploads/file-1682338838585download (2).jpg"
+}]

@@ -1,4 +1,5 @@
 const userModel = require("./model");
+const contect = require("./contectModel.js");
 const services = require("./services");
 const bcrypt = require('bcrypt');
 const { query } = require("express");
@@ -453,13 +454,13 @@ exports.addUsers = async (req, res) => {
             const ExcelData = await this.readExcelFile(path.join(__dirname, `../../../public/uploads/${req.file.filename}`));
             console.log(ExcelData.length)
             for (const item of ExcelData) {
-                console.log(item.phone, "===")
+
                 if (item.phone) {
-                    const data = await userModel.findOne({ phone: item.phone });
-                    if (!data) {
-                        await userModel.create(item);
-                        i++;
-                    };
+                    const data = await userModel.findOneAndUpdate({ phone: item.phone }, { phone: item.phone }, { new: true, upsert: true });
+                    // if (!data) {
+                    //     await userModel.create(item);
+                    i++;
+                    // };
                 };
                 if (item.Mobile) {
                     // const data = await userModel.findOneAndUpdate({ Mobile: item.Mobile }, { item }, { new: true, upsert: true });
@@ -468,6 +469,30 @@ exports.addUsers = async (req, res) => {
                     // if (!data) {
                     //     await userModel.create(item);
                     i++;
+                    // };
+                };
+                if (item['Group Membership'] || item['Phone 1 - Type'] || item['Phone 1 - Value'] || item['Organization 1 - Type'] || item['Organization 1 - Name']) {
+                    console.log(item, "===")
+                    // console.log(item['Group Membership'], "---", 888);
+                    // console.log(item['Phone 1 - Type'], "---", 888);
+                    // console.log(item['Phone 1 - Value'], "---", 888);
+                    // console.log(item['Organization 1 - Type'], "---", 888);
+                    console.log(item['Phone 1 - Value'], "---", 888);
+                    console.log(item['Phone 1 - Value'].split(":::"), "---", 888);
+                    let obj = {};
+                    obj.GroupMembership = item['Group Membership'];
+                    obj.PhoneType = item['Phone 1 - Type'];
+                    obj.PhoneValue = item['Phone 1 - Value'];
+                    obj.OrganizationType = item['Organization 1 - Type'];
+                    obj.OrganizationName = item['Organization 1 - Name'];
+                    const Userdata = await userModel.findOneAndUpdate({ phone: obj.PhoneValue }, { name: obj.OrganizationName }, { new: true, upsert: true });
+                    obj.userId = Userdata._id
+                    const data = await contect.findOneAndUpdate({ userId: Userdata._id }, obj, { new: true, upsert: true });
+                    i++;
+                    console.log(i, "-")
+                    // if (!data) {
+                    //     await userModel.create(item);
+                    // iuyi
                     // };
                 };
             };
