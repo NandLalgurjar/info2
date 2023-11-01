@@ -1,6 +1,6 @@
-<% if(message.success || message.error || message.danger || message.warning) { %>
+<% if(message?.success || message?.error || message?.danger || message?.warning) { %>
     <div class="position-fixed bottom-15px right-15px z-index-1000" style="bottom:15px; right:15px;z-index: 1000;">
-        <% if(message.success){ %>
+        <% if(message?.success){ %>
 
             <div class="toast border" id="toastBasic4" role="alert" aria-live="assertive" aria-atomic="true"
                 data-delay="5000">
@@ -14,11 +14,11 @@
                     </button>
                 </div>
                 <div class="toast-body">
-                    <%= message.success %>
+                    <%= message?.success %>
                 </div>
             </div>
             <% } %>
-                <% if(message.warning){ %>
+                <% if(message?.warning){ %>
 
                     <div class="toast border" id="toastBasic2" role="alert" aria-live="assertive" aria-atomic="true"
                         data-delay="5000">
@@ -32,12 +32,12 @@
                             </button>
                         </div>
                         <div class="toast-body">
-                            <%= message.warning %>
+                            <%= message?.warning %>
                         </div>
                     </div>
                     <% } %>
 
-                        <% if(message.danger){ %>
+                        <% if(message?.danger){ %>
 
                             <div class="toast border" id="toastBasic3" role="alert" aria-live="assertive"
                                 aria-atomic="true" data-delay="5000">
@@ -51,12 +51,12 @@
                                     </button>
                                 </div>
                                 <div class="toast-body">
-                                    <%= message.danger %>
+                                    <%= message?.danger %>
                                 </div>
                             </div>
                             <% } %>
 
-                                <% if(message.error){ %>
+                                <% if(message?.error){ %>
 
                                     <div class="toast border" id="toastBasic1" role="alert" aria-live="assertive"
                                         aria-atomic="true" data-delay="5000">
@@ -70,7 +70,7 @@
                                             </button>
                                         </div>
                                         <div class="toast-body">
-                                            <%= message.error %>
+                                            <%= message?.error %>
                                         </div>
                                     </div>
                                     <% } %>
@@ -79,19 +79,19 @@
 
     <script>
         $(window).on("load", function () {
-            if (`<%= message.success %>`) {
+            if (`<%= message?.success %>`) {
                 $("#toastBasic4").toast('show');
             }
 
-            if (`<%= message.danger %>`) {
+            if (`<%= message?.danger %>`) {
                 $("#toastBasic3").toast('show');
             }
 
-            if (`<%= message.error %>`) {
+            if (`<%= message?.error %>`) {
                 $("#toastBasic1").toast('show');
             }
 
-            if (`<%= message.warning %>`) {
+            if (`<%= message?.warning %>`) {
                 $("#toastBasic2").toast('show');
             }
         });
