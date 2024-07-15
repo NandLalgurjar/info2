@@ -4,31 +4,31 @@ const user = require("../../api/user/model");
 exports.allUser = async (req, res) => {
     try {
         let serchobj = {};
-        if (req.query.name != undefined && req.query.name != "") {
+        if (req.query?.name && req.query.name != "") {
             serchobj.name = { $regex: req.query.name, $options: "i" };
         }
 
-        if (req.query.referId != undefined && req.query.referId != "") {
+        if (req.query?.referId && req.query.referId != "") {
             serchobj.referId = new mongoose.Types.ObjectId(req.query.referId)
         }
 
-        if (req.query.email != undefined && req.query.email != "") {
+        if (req.query?.email && req.query.email != "") {
             serchobj.email = { $regex: req.query.email, $options: "i" };
         }
 
-        if (req.query.mobile != undefined && req.query.mobile != "") {
+        if (req.query?.mobile && req.query.mobile != "") {
             serchobj.phone = { $regex: req.query.mobile, $options: "i" };
         }
 
-        if (req.query.gender != undefined && req.query.gender != "") {
+        if (req.query?.gender && req.query.gender != "") {
             serchobj.gender = req.query.gender
         }
 
-        if (req.query.status != undefined && req.query.status != "") {
+        if (req.query?.status && req.query.status != "") {
             serchobj.type = req.query.status;
         }
 
-        const Finddata = await user.aggregate([
+        const data = await user.aggregate([
             { '$match': serchobj }, {
                 '$lookup': {
                     'from': 'orders',
@@ -84,12 +84,7 @@ exports.allUser = async (req, res) => {
             }
         ]);
 
-        return {
-            statusCode: 200,
-            status: true,
-            message: "address-is already in database !",
-            data: Finddata,
-        };
+        return data
     } catch (error) {
         console.log(error);
     };

@@ -5,23 +5,27 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>Dashboard</title>
+  <title>
+    <%= locals.title %>
+  </title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
   <%- include("../../partials/headlink.ejs")%>
 </head>
 
 <body>
-  <%- include("../../partials/alertMsg") %> <%- include("../../partials/Header.ejs") %> 
-  <%- include("../../partials/sidebar.ejs") %>
+  <%- include("../../partials/alertMsg") %> <%- include("../../partials/Header.ejs") %>
+      <%- include("../../partials/sidebar.ejs") %>
 
         <main id="main" class="main">
           <div class="pagetitle">
-            <h1><%- user.type %></h1>
+            <h1><%- locals?.user?.type %></h1>
             <nav>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">
+                  <%= locals.title %>
+                </li>
               </ol>
             </nav>
           </div>
@@ -45,7 +49,7 @@
                             </div>
                             <div class="ps-3">
                               <h6>
-                                <%= data.order %>
+                                <%= locals?.data?.order %>
                               </h6>
                             </div>
                           </div>
@@ -96,7 +100,7 @@
                             </div>
                             <div class="ps-3">
                               <h6>
-                                <%= data.saloon %>
+                                <%=locals?.data?.saloon %>
                               </h6>
                             </div>
                           </div>
@@ -104,7 +108,7 @@
                       </a>
                     </div>
                   </div>
-                  <%if(user.type=="super-admin"){%>
+                  <%if(locals?.user?.type=="super-admin"){%>
                     <!-- user card -->
                     <div class="col-xxl-4 col-md-4">
                       <div class="card info-card user-card">
@@ -117,7 +121,7 @@
                               </div>
                               <div class="ps-3">
                                 <h6>
-                                  <%= data.user %>
+                                  <%= locals?.data?.user %>
                                 </h6>
                               </div>
                             </div>
@@ -140,7 +144,7 @@
                               </div>
                               <div class="ps-3">
                                 <h6>
-                                  <%= data.FindRequist %>
+                                  <%= locals?.data?.FindRequist %>
                                 </h6>
                               </div>
                             </div>
@@ -161,7 +165,7 @@
                                 </div>
                                 <div class="ps-3">
                                   <h6>
-                                    <%= data.Findservice %>
+                                    <%= locals?.data?.Findservice %>
                                   </h6>
                                 </div>
                               </div>
@@ -181,7 +185,7 @@
                                 </div>
                                 <div class="ps-3">
                                   <h6>
-                                    <%= data.Findpackeges %>
+                                    <%= locals?.data?.Findpackeges %>
                                   </h6>
                                 </div>
                               </div>
@@ -199,7 +203,7 @@
                             <i class="bi bi-currency-dollar"></i>
                           </div>
                           <div class="ps-3">
-                            <h6><%= data.user %></h6>
+                            <h6><%=locals?.data?.user %></h6>
                             <span class="text-success small pt-1 fw-bold">8%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
                           </div>

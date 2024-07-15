@@ -97,7 +97,7 @@
                 </li>
             </ul>
         </li>
-        <%if(user.type=="super-admin"){%>
+        <%if(user?.type=="super-admin"){%>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Blogs Manager</span><i
@@ -226,7 +226,7 @@
                                 <i class="bi bi-circle"></i><span>Add Vacancy Post</span>
                             </a>
                         </li>
-                        <%if(user.type=="super-admin"){%>
+                        <%if(user?.type=="super-admin"){%>
                             <li>
                                 <a href="/View-Vacancy">
                                     <i class="bi bi-circle"></i><span>View Vacancy</span>
@@ -235,7 +235,7 @@
                             <%}%>
                     </ul>
                 </li>
-                <%if(user.type=="super-admin"){%>
+                <%if(user?.type=="super-admin"){%>
                     <li class="nav-item">
                         <a class="nav-link collapsed" data-bs-target="#icon-Refer" data-bs-toggle="collapse" href="#"
                             aria-expanded="false">

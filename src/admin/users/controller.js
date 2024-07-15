@@ -8,12 +8,14 @@ const { findOne } = require("../../api/user/model");
 
 exports.allUser = async (req, res) => {
     try {
+        res.locals.message = req.flash();
         if (req.user.type == "admin") {
             return res.redirect("/")
         }
-        res.locals.message = req.flash();
-        const Finddata = await allUser(req)
-        res.render("users/view-user", { data: Finddata.data, user: req.user, query: req.query, })
+        const data = await allUser(req)
+        console.log(data.length)
+        req.flash("success", "user fatch successfully")
+        res.render("users/view-user", { data, user: req.user, query: req.query, })
     } catch (error) {
         console.log(error);
     };
